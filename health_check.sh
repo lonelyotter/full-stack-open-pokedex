@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Make the HTTP GET request to http://localhost:8080/health
-response=$(curl --silent http://localhost:8080/health)
+response=$(curl --silent https://patient-pine-3040.fly.dev//health)
 
 # Check if the response string equals 'ok'
 if [[ "$response" == "ok" ]]; then
