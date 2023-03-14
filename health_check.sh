@@ -1,6 +1,6 @@
 #!/bin/bash
 
-response=$(curl --silent https://patient-pine-3040.fly.dev//health)
+response=$(curl --silent https://patient-pine-3040.fly.dev/health)
 
 # Check if the response string equals 'ok'
 if [[ "$response" == "ok" ]]; then
