@@ -18,7 +18,7 @@ primary_region = "nrt"
   internal_port = 8080
   processes = ["app"]
   protocol = "tcp"
-  script_checks = []
+
   [services.concurrency]
     hard_limit = 25
     soft_limit = 20
@@ -50,7 +50,7 @@ primary_region = "nrt"
     tls_skip_verify = false
 
   [[services.script_checks]]
-    command       = "./health_check.sh"
+    command       = "/app/health_check.sh"
     args          = ["a", "b", "c"]
     grace_period  = "1s"
     interval      = "5s"
