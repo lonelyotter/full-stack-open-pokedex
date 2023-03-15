@@ -39,11 +39,11 @@ jobs:
           wait-on: http://localhost:5001
       
       - name: deploy setup
-      if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' }}
         uses: superfly/flyctl-actions/setup-flyctl@master
 
       - name: deploy
-      if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' }}
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
