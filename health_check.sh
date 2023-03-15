@@ -1,12 +1,11 @@
 #!/bin/bash
 
-response=$(curl --silent https://patient-pine-3040.fly.dev/health)
+res=$(curl -s https://patient-pine-3040.fly.dev/health)
 
-# Check if the response string equals 'ok'
-if [[ "$response" == "ok" ]]; then
-    echo "Health check passed"
-    exit 0
-else
-    echo "Health check failed"
-    exit 1
-fi
+if [ "$res" == "ok" ]; then
+  echo "Succeeded curl to /health"
+  exit 0
+  fi
+
+echo "Failed curl to /health"
+exit 1
