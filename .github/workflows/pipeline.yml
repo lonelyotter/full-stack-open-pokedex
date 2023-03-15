@@ -28,6 +28,7 @@ jobs:
       - name: build
         run: npm run build
 
+
       - name: test
         run: npm run test
 
@@ -37,6 +38,15 @@ jobs:
           build: npm run build
           start: npm run start-prod
           wait-on: http://localhost:5001
+          
+      - name: notify failure
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: failure()
+        with:
+          severity: error
+          text: Build failed
+          description: commit ${{ github.sha }} by ${{ github.actor }} broke the build :(
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   
   deploy:
     if: ${{github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message), ' '), '#skip')}}
@@ -52,6 +62,15 @@ jobs:
         run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      
+      - name: notify success
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: success()
+        with:
+          severity: info
+          text: A new version of Pokedex deployed
+          description: to https://patient-pine-3040.fly.dev/ by ${{ github.actor }}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
   
   tag_release:
     needs: [deploy]
