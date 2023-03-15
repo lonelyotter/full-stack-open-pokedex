@@ -1,0 +1,14 @@
+name: Periodic health check
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # every day at midnight
+
+jobs:
+  health_check:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: health check
+        uses: jtalk/url-health-check-action@v3
+        with:
+          url: https://patient-pine-3040.fly.dev/health
