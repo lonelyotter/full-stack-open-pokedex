@@ -9,3 +9,5 @@ Alternatives to Jenkins and GitHub Actions for setting up the CI for a Java appl
 Deciding whether to use a self-hosted or cloud-based environment for the CI setup depends on various factors. Self-hosting offers more control and security, but also requires more maintenance and resources. Cloud-based solutions are easier to set up and manage, but rely on third-party services and may have limited customization options. Factors like team size, budget, and data sensitivity should be considered when making this decision.
 
 In conclusion, setting up a CI for a Java application can be achieved using various tools and services available in the ecosystem. Alternatives to Jenkins and GitHub Actions include Travis CI, CircleCI, and GitLab CI/CD. The choice between self-hosting and cloud-based environments depends on several factors and should be made based on the team's specific needs and circumstances.
+
+some changes
