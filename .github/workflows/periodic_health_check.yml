@@ -2,7 +2,7 @@ name: Periodic health check
 
 on:
   schedule:
-    # - cron: '0 0 * * *' # every day at midnight
+    - cron: '0 0 1 1 *' # every year on January 1st at midnight
 
 jobs:
   health_check:
